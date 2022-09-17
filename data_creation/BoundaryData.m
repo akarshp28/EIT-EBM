@@ -52,10 +52,16 @@ for nnn = 1:ne
     % Evaluate Neumann data at the plane point (mp1,mp2)
     % We know that this trigonometric data integrates to zero, 
     % ensuring solvability of the Neumann problem.
-
-    load Data/InputData/BoundaryDataN n factor phase
+    
+    if nnn == 1
+        load Data/InputData/BoundaryDataN n factor phase
+        disp(n)
+        disp(factor)
+        disp(phase)
+    end
     
     theta = angle(mp1+1i*mp2);
     g(nnn) = factor* (1/sqrt(2*pi)*exp(1i*n*(theta+phase)));
     g(nnn) = real(g(nnn));
 end
+
