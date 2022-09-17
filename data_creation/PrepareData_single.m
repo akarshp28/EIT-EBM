@@ -8,8 +8,10 @@ k = 1;                  % image number
 % anomaly mode
 % 0 = circle
 % 1 = shepp-logan phantom
-circle = 0;
+circle = 1;
 anomaly_type = 4;
+phantom_type = 4; % 1,2,3,4 phantoms for paper
+disp(phantom_type)
 
 N = 128;                % mesh size
 NumOfRefine = 7;        % mesh density
@@ -92,7 +94,6 @@ if circle == 0
                         sigma_val3, hc5, hc6, hR, he5, he6, ...
                         sigma_val4, hc7, hc8, hR, he7, he8, ...
                         ];
-
     
     end
     
@@ -104,11 +105,21 @@ if solve > 0
     nlist = [1, 2];
     phslist = [0, 2, 4, 6];
     
-    for nval = 1:length(nlist)
-        n = nlist(nval);
-        for pval = 1:length(phslist)
-            phs = phslist(pval);
-            create_data(k, circle, anomaly_type, anomaly_list, n, phs, NumOfRefine, N, factor)
+    if circle == 0  
+        for nval = 1:length(nlist)
+            n = nlist(nval);
+            for pval = 1:length(phslist)
+                phs = phslist(pval);
+                create_data(k, circle, anomaly_type, 0, anomaly_list, n, phs, NumOfRefine, N, factor)
+            end
+        end
+    else
+        for nval = 1:length(nlist)
+            n = nlist(nval);
+            for pval = 1:length(phslist)
+                phs = phslist(pval);
+                create_data(k, circle, anomaly_type, phantom_type, 0, n, phs, NumOfRefine, N, factor)
+            end
         end
     end
 end
