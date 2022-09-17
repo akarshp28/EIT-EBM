@@ -1,4 +1,4 @@
-function create_data(k, circle, anomaly_type, anomaly_list, n, phs, NumOfRefine, N, factor)
+function create_data(k, circle, anomaly_type, phantom_type, anomaly_list, n, phs, NumOfRefine, N, factor)
 
 fprintf('n=%d Phase=%d \n', n, phs);
 
@@ -26,7 +26,7 @@ else
     % Shepp-Logan Phantom
     for ii=1:N
         for jj=1:N
-            GlobalSigma(jj,ii) = heartNlungs(xx(ii)+1i*yy(jj));
+            GlobalSigma(jj,ii) = heartNlungs(xx(ii)+1i*yy(jj), phantom_type);
         end
     end
 end
@@ -45,7 +45,7 @@ u = assempde('BoundaryData',p,e,t,'FEMconductivitySmooth',0,0);
 [~,g,~,~] = BoundaryData(p,e);
 
 %% Represent the finite element method solution to caresian grid
-[h,center, radius, U,W,Sigma,XOmeg,YOmeg,Omega,sx,sy, dudn, sdudn, n_hat_x, n_hat_y] = ExtractImages(p,e,t,u,g,N,Globalsx,Globalsy);
+[h,center, radius, U,W,Sigma,XOmeg,YOmeg,Omega,sx,sy, dudn, sdudn, n_hat_x, n_hat_y, Yall, Xall] = ExtractImages(p,e,t,u,g,N,Globalsx,Globalsy);
 CorrectS = (0.5*(max(XOmeg)-min(XOmeg)));
 CorrectB = (min(XOmeg)+CorrectS);
 U = U.*Omega;
@@ -117,7 +117,9 @@ div = sx * ux + sy * uy + Sigma * (uxx + uyy);
 fprintf('Div=%f \n', norm(div)^2);
 
 %% Draw figures
-draw_fig
+if n == 1
+    draw_fig
+end
 
 %% Save data
 currentFolder = pwd;
@@ -127,7 +129,7 @@ file = sprintf('%s_N%d_refine%d_n%d_phs%d.mat', tmpl, N, NumOfRefine, n, phs);
 
 fprintf('saving %s\n',fullfile(pt,file));
 
-save(fullfile(pt,file), 'Omega', 'W', 'XOmeg','YOmeg', ...
+save(fullfile(pt,file), 'Omega', 'W', 'XOmeg','YOmeg', 'Yall', 'Xall' ,...
                 'h','center', 'radius','Xb','Yb', 'CorrectS','CorrectB', ...
                 'dudn', 'sdudn', 'n_hat_x', 'n_hat_y', ...
                 'dudnb', 'sdudnb', 'n_hat_xb', 'n_hat_yb',...
