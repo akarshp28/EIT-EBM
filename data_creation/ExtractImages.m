@@ -1,7 +1,7 @@
-function [h,center, radius,U,W,Sigma,XOmeg,YOmeg, Omega,Sigmax,Sigmay, dudn, sdudn, n_hat_x, n_hat_y] = ExtractImages(p,e,t,u,g,N,Globalsx,Globalsy)
+function [h,center, radius,U,W,Sigma,XOmeg,YOmeg, Omega,Sigmax,Sigmay, dudn, sdudn, n_hat_x, n_hat_y, Yall, Xall] = ExtractImages(p,e,t,u,g,N,Globalsx,Globalsy)
     
     marg = 10;
-    phiThresh = 0.0001;
+    phiThresh = 0.00001;
     center = (N+1)/2;
     h = 2.0/(N-1-2*marg);
     radius = (N-1-2*marg)/2;
@@ -55,6 +55,9 @@ function [h,center, radius,U,W,Sigma,XOmeg,YOmeg, Omega,Sigmax,Sigmay, dudn, sdu
     
     IX = find(phi >=-phiThresh);
     [YOmeg,XOmeg] = ind2sub(size(U),IX);
+
+    IX2 = find(phi);
+    [Yall,Xall] = ind2sub(size(U),IX2);
     
     [ux,uy] = gradient(U,h);
     dudn = ux.*n_hat_x +uy.*n_hat_y;
