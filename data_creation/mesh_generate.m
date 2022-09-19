@@ -2,7 +2,7 @@ clc
 clear all
 close all
 
-% For paper
+%% For paper
 % Phantom 1 = circle = 1, logan_type = 1;
 % Phantom 2 = circle = 0, circle_anomaly_type = 1;
 % Phantom 3 = circle = 1, logan_type = 5;
@@ -37,8 +37,8 @@ elseif phantom == 5
     logan_type = nan;
 end
 
-% final mesh data with anomaly
-[p,e,t, sigma, noisy_sigma] = generate_phantom(circle, logan_type, circle_anomaly_type);
+%% Mesh data with anomaly
+[p,e,t, sigma, noisy_sigma, delta] = generate_phantom(circle, logan_type, circle_anomaly_type);
 
 figure(1)
 pdemesh(p,e,t, sigma)
@@ -46,8 +46,11 @@ pdemesh(p,e,t, sigma)
 figure(2)
 pdemesh(p,e,t, noisy_sigma)
 
-% function to generate mesh type data
-function [p, e, t, Sigma, SigmaSmooth] = generate_phantom(circle, logan_type, circle_anomaly_type)
+figure(3)
+pdemesh(p,e,t, delta)
+
+%% Function to generate mesh type data
+function [p, e, t, Sigma, SigmaSmooth, delta] = generate_phantom(circle, logan_type, circle_anomaly_type)
     
     NumOfRefine = 7;
     
@@ -147,22 +150,22 @@ function [p, e, t, Sigma, SigmaSmooth] = generate_phantom(circle, logan_type, ci
         anomaly_plot(128, circle_anomaly_type, anomaly_list)
         
         Sigma = anomaly_gen(trix+1i*triy, circle_anomaly_type, anomaly_list);
-        
-        noise_std = 3; %noise std
-        fil = fspecial('gaussian', 200, noise_std); 
-        SigmaSmooth = imfilter(Sigma, fil,'symmetric','same');
-
-        disp(size(SigmaSmooth))
-        
+    
     else
         
         % Evaluate conductivity Shepp-Logan Phantom
         Sigma = heartNlungs(trix + 1i*triy, logan_type);
-        
-        noise_std = 3; %noise std
-        fil = fspecial('gaussian', 200, noise_std); 
-        SigmaSmooth = imfilter(Sigma, fil,'symmetric','same');
     
+    end
+    
+    SigmaSmooth = zeros(size(Sigma));
+    delta = zeros(size(Sigma));
+    noise = randn(size(Sigma));
+    noise_std = 3; %noise std
+    Vstd = 0.01*noise_std;
+    parfor ii=1:length(Sigma)
+        SigmaSmooth(ii) = Sigma(ii) * (1 + Vstd * noise(ii))
+        delta(ii) = norm(Sigma(ii) - SigmaSmooth(ii), 2);
     end
 
 end
