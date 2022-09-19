@@ -38,12 +38,16 @@ elseif phantom == 5
 end
 
 % final mesh data with anomaly
-[p,e,t, sigma] = generate_phantom(circle, logan_type, circle_anomaly_type);
+[p,e,t, sigma, noisy_sigma] = generate_phantom(circle, logan_type, circle_anomaly_type);
 
+figure(1)
 pdemesh(p,e,t, sigma)
 
+figure(2)
+pdemesh(p,e,t, noisy_sigma)
+
 % function to generate mesh type data
-function [p, e, t, cond] = generate_phantom(circle, logan_type, circle_anomaly_type)
+function [p, e, t, Sigma, SigmaSmooth] = generate_phantom(circle, logan_type, circle_anomaly_type)
     
     NumOfRefine = 7;
     
@@ -142,12 +146,22 @@ function [p, e, t, cond] = generate_phantom(circle, logan_type, circle_anomaly_t
         
         anomaly_plot(128, circle_anomaly_type, anomaly_list)
         
-        cond = anomaly_gen(trix+1i*triy, circle_anomaly_type, anomaly_list);
-    
+        Sigma = anomaly_gen(trix+1i*triy, circle_anomaly_type, anomaly_list);
+        
+        noise_std = 3; %noise std
+        fil = fspecial('gaussian', 200, noise_std); 
+        SigmaSmooth = imfilter(Sigma, fil,'symmetric','same');
+
+        disp(size(SigmaSmooth))
+        
     else
         
         % Evaluate conductivity Shepp-Logan Phantom
-        cond = heartNlungs(trix + 1i*triy, logan_type);
+        Sigma = heartNlungs(trix + 1i*triy, logan_type);
+        
+        noise_std = 3; %noise std
+        fil = fspecial('gaussian', 200, noise_std); 
+        SigmaSmooth = imfilter(Sigma, fil,'symmetric','same');
     
     end
 
