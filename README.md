@@ -13,6 +13,7 @@ Physics-informed neural networks (PINNs) are attracting significant attention fo
 
 ## EBM prior training
 ebm_score_matching.py trains the EBM using many phantoms created with PrepareData_multi.m.
+eit_classifier.py trains a EIT classification model to determine the number of anomalies in a given phantom. This is useful for FID score computation.
 
 ## Forward problem solving
 unet.py trains the forward model UNET using a single phantom created with PrepareData_single.m.
