@@ -6,6 +6,7 @@
 Physics-informed neural networks (PINNs) are attracting significant attention for solving partial differential equation (PDE) based inverse problems, including electrical impedance tomography (EIT). EIT is non-linear and especially its inverse problem is highly ill-posed. Therefore, successful training of PINNs is extremely sensitive to the interplay between different loss terms and hyper-parameters, including the learning rate. In this work, we propose a Bayesian approach through a data-driven energy-based model (EBM) as a prior, to improve the overall accuracy and quality of tomographic reconstruction. In particular, the EBM is trained over the possible solutions of the PDEs with different boundary conditions. By imparting such prior onto physics-based training, PINN convergence is expedited more than ten times faster than the PDE’s solution. The evaluation outcome shows that our proposed method is more robust for solving the EIT problem.
 
 ## EIT-EBM code repository layout
+The code is written using TensorFlow 2.xx. 
 
 ## Data creation:
 1. PrepareData_single.m operates in single mode and creates only 1 body with user-selected anomaly conductvity and location.
