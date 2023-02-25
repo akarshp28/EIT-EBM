@@ -1,0 +1,229 @@
+/* Base styles */
+body {
+	place-content: center;
+	display: grid;
+    font-family: 'Roboto', sans-serif;
+    margin: auto;
+    padding: auto;
+	background-color: #f0efef;
+	
+}
+
+footer {
+    grid-column: 1 / -1;
+}
+
+
+/* Header styles */
+header {
+    background-color: #311B92;
+    color: white;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+	flex-direction: column;
+    justify-content: space-between;
+	place-content: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 36px;
+	text-align: center;
+}
+
+/* Navigation styles */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+	margin-top: 20px;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+nav li {
+    margin-right: 16px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Main content styles */
+main {
+    padding: 16px;
+}
+
+/* Section styles */
+section {
+	width: 60%; /* reduce the width here */
+    margin: 0 auto;
+    margin-bottom: 36px; /* Add more spacing here */
+	background-color: white;
+    padding: 16px;
+    border-radius: 4px;
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+section h2 {
+    font-size: 32px;
+    margin-top: 0;
+    margin-bottom: 16px;
+	text-align: center;
+    margin: 16px 0;
+}
+
+section h1 {
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 16px;
+	text-align: center;
+    margin: 16px 0;
+}
+
+
+section p {
+    text-align: left;
+    margin: 0;
+}
+
+
+/* Footer styles */
+footer {
+    background-color: #311B92;
+    color: white;
+    text-align: center;
+    padding: 16px;
+}
+
+/* Image styles */
+img {
+    max-width: 35%;
+	display: block;
+    margin: 0 auto;
+}
+
+div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.caption {
+	text-align: center;
+}
+
+.image-container {
+    position: relative;
+    display: block;
+}
+
+.author-names {
+    text-align: center;
+    color: white;
+    margin-top: 32px;
+	line-height: 1.5; /* Add more space here */
+}
+
+#myBtn {
+  display: none; /* Hidden by default */
+  position: fixed; /* Fixed/sticky position */
+  bottom: 20px; /* Place the button at the bottom of the page */
+  right: 30px; /* Place the button 30px from the right */
+  z-index: 99; /* Make sure it does not overlap */
+  border: none; /* Remove borders */
+  outline: none; /* Remove outline */
+  background-color: #311B92; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  padding: 15px; /* Some padding */
+  border-radius: 10px; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+}
+
+#myBtn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.button-container {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.button {
+    display: inline-block;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: 4px;
+    box-shadow: 0 3px 1px -2px rgba(0,0,0,.2), 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12);
+    transition: background-color 250ms cubic-bezier(.4,0,.2,1),box-shadow 250ms cubic-bezier(.4,0,.2,1);
+    color: white;
+    background-color: #7E57C2;
+    margin-right: 8px;
+	margin-bottom: 18px;
+	font-size: 0.8em; /* set the font size to be small */
+	white-space: nowrap; /* prevent the text from wrapping */
+	overflow: hidden; /* hide the text that overflows */
+	text-overflow: ellipsis; /* add ellipsis to indicate that there is more text */
+	position: relative; /* set the position to relative */
+}
+.button:hover {
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+    background-color: #AA00FF;
+	font-size: 1em; /* set the font size to be normal */
+	white-space: normal; /* allow the text to wrap */
+	overflow: visible; /* show the text that overflows */
+	text-overflow: initial; /* remove the ellipsis */
+	opacity: 1; /* set the opacity to 1 */
+}
+
+
+.button::before {
+  content: "Hover Text"; /* set the hover text */
+  position: absolute; /* set the position to absolute */
+  top: 0;
+  left: 0;
+  opacity: 0; /* set the opacity to 0 */
+  transition: opacity 0.3s ease; /* add a transition for the opacity */
+}
+
+/*
+iframe {
+    border: none; /* remove the default border */
+    background-color: white; /* add a background color */
+    padding: 16px; /* add padding */
+    border-radius: 4px; /* add border radius */
+    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12); /* add box shadow */
+    margin: 0 auto; /* center the element */
+    display: block; /* display the element as block */
+    max-width: 80%; /* set the max width to 100% */
+}
+
+.button::after {
+  content: "Static Text"; /* set the static text */
+}*/
+
+
+
+
+

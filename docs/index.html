@@ -1,1 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Energy-Based Priors For PINNs</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+	
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+		
+	  gtag('config', 'GA_MEASUREMENT_ID');
+	</script>
 
+	
+</head>
+
+<body>
+	
+	<button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
+	
+	<script>
+	// Get the button
+	let mybutton = document.getElementById("myBtn");
+
+	// When the user scrolls down 20px from the top of the document, show the button
+	window.onscroll = function() {scrollFunction()};
+
+	function scrollFunction() {
+	  if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+		mybutton.style.display = "block";
+	  } else {
+		mybutton.style.display = "none";
+	  }
+	}
+
+	// When the user clicks on the button, scroll to the top of the document
+	function topFunction() {
+	  document.body.scrollTop = 0;
+	  document.documentElement.scrollTop = 0;
+	}
+	</script>
+	
+    <header>
+        <h1>Improved Training Of Physics-Informed Neural Networks <br> Using Energy-Based Priors: <br>A Study On Electrical Impedance Tomography</h1>
+		
+		<p class="author-names">Akarsh Pokkunuru<sup>1</sup>, Amirmohammad Rooshenas<sup>2</sup>, Thilo Strauss<sup>3</sup>, Anuj Abhishek<sup>1</sup>, Taufiquar Khan<sup>1</sup></p>
+		<span style="font-size: 16px">University of North Carolina at Charlotte<sup>1</sup>, University of Illinois at Chicago<sup>2</sup>, Bosch ETAS Research<sup>3</sup> </span></p>
+		
+		<div class="button-container">
+			<a href="https://github.com/akarshp28/EIT-EBM" target="_blank" class="button">Source Code</a>
+	    </div>
+		
+        <nav>
+            <ul>
+				<li><a href="#Versions">Paper Versions</a></li>
+                <li><a href="#Abstract">Abstract</a></li>
+                <li><a href="#Approach">Approach</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#Citation">Citation</a></li>
+            </ul>
+        </nav>
+	
+    </header>
+	
+    <main>
+	
+		<section id="Versions">
+			<h2>Paper Versions</h2>
+				&nbsp;
+				<h1> <strong>ICLR 2023</strong> </h1>
+				<div class="button-container">
+					<a href="https://example1.com" target="_blank" class="button">Paper</a>
+					<a href="https://example1.com" target="_blank" class="button">Poster</a>
+				</div>
+				&nbsp;
+				<h1> <strong>ML4PS Workshop<br>NeurIPS 2022</strong></h1>
+				
+				<div class="button-container">
+					<a href="https://ml4physicalsciences.github.io/2022/files/NeurIPS_ML4PS_2022_92.pdf" target="_blank" class="button">Paper</a>
+					<a href="https://neurips.cc/media/PosterPDFs/NeurIPS%202022/56992.png" target="_blank" class="button">Poster</a>
+				</div>
+		</section>
+		
+        <section id="Abstract">
+            <h2>Abstract</h2>
+			
+            <p>Physics-informed neural networks (PINNs) are attracting significant attention for
+				solving partial differential equation (PDE) based inverse problems, including electrical
+				impedance tomography (EIT). EIT is non-linear and especially its inverse
+				problem is highly ill-posed. Therefore, successful training of PINN is extremely
+				sensitive to interplay between different loss terms and hyper-parameters, including
+				the learning rate. In this work, we propose a Bayesian approach through datadriven
+				energy-based model (EBM) as a prior, to improve the overall accuracy and
+				quality of tomographic reconstruction. In particular, the EBM is trained over the
+				possible solutions of the PDEs with different boundary conditions. By imparting
+				such prior onto physics-based training, PINN convergence is expedited by more
+				than ten times faster to the PDE’s solution. Evaluation outcome shows that our
+				proposed method is more robust for solving the EIT problem.</p>
+			&nbsp;
+			<div class="image-container">
+				<img src="overview.png" alt="image">
+				&nbsp;
+				<div class="caption">Energy-Based Prior For Accelerating EIT PINNs</div>
+			</div>
+		
+        </section>
+		
+		
+        <section id="Approach">
+            <h2>Summary</h2>
+			
+			<div class="image-container">
+				&nbsp;
+				<img src="animated.gif" alt="image">
+				<p class="caption">PINN Training Progression With and Without Our Energy-Based Prior</p>
+			</div>
+			
+            <p>Insert details about the methodology used in your project here.</p>
+        </section>
+		
+		<section id="results">
+			<h2>Results</h2>
+			<p>Insert your project results here.</p>
+			<!-- <iframe src="G:\My Drive\NeruIPS_workshop_2022\figures\comparison.pdf" width="100%" height="500"></iframe> -->
+		</section>
+		
+        <section id="Citation">
+            <h2>Bibtex Citation</h2>
+			<div class="content">
+			  <code>
+			  @inproceedings{<br>
+				&nbsp;&nbsp;pokkunuru2023improved,<br>
+				&nbsp;&nbsp;title={Improved Training of Physics-Informed Neural Networks Using Energy-Based Priors: a Study on Electrical Impedance Tomography},<br>
+				&nbsp;&nbsp;author={Akarsh Pokkunuru and Pedram Rooshenas and Thilo Strauss and Anuj Abhishek and Taufiquar Khan},<br>
+				&nbsp;&nbsp;booktitle={International Conference on Learning Representations},<br>
+				&nbsp;&nbsp;year={2023},<br>
+				&nbsp;&nbsp;url={https://openreview.net/forum?id=zqkfJA6R1-r} <br>
+				}
+			  
+			  </code> 
+			</div>
+        </section>
+	
+    </main>
+    <footer>
+        <p>Copyright ©2023 Akarsh Pokkunuru</p>
+    </footer>
+</body>
+</html>
