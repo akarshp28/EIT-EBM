@@ -29,7 +29,7 @@ snet.py trains the inverse model SNET using a pre-trained UNET and corresponding
 @inproceedings{
 pokkunuru2023improved,
 title={Improved Training of Physics-Informed Neural Networks Using Energy-Based Priors: a Study on Electrical Impedance Tomography},
-author={Akarsh Pokkunuru and Pedram Rooshenas and Thilo Strauss and Anuj Abhishek and Taufiquar Khan},
+author={Akarsh Pokkunuru and Amirmohmmad Rooshenas and Thilo Strauss and Anuj Abhishek and Taufiquar Khan},
 booktitle={International Conference on Learning Representations},
 year={2023},
 url={https://openreview.net/forum?id=zqkfJA6R1-r}
