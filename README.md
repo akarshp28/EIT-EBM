@@ -1,4 +1,4 @@
-# Improved Training of Physics-Informed Neural Networks Using Energy-Based Priors: a Study on Electrical Impedance Tomography
+# Official Repository of: Improved Training of Physics-Informed Neural Networks Using Energy-Based Priors: a Study on Electrical Impedance Tomography
 
 ## Paper: [Link](https://openreview.net/pdf?id=zqkfJA6R1-r)
 
