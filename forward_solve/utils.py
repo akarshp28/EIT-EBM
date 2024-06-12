@@ -148,6 +148,14 @@ def ExtractX(Dict):
     XallRand = ShuffleX(Xall)
     return Xall, XallRand
 
+def ExtractX2(Dict):
+    YOMEG = Dict['Yall']
+    XOMEG = Dict['Xall']
+    Xall = np.zeros((XOMEG.shape[0], 2), dtype=np.int64)
+    Xall[:, 0] = np.transpose(XOMEG)
+    Xall[:, 1] = np.transpose(YOMEG)
+    return Xall
+
 def ShuffleX(Xt):
     Num = Xt.shape[0]
     list_ = np.linspace(0, Num-1, Num)
